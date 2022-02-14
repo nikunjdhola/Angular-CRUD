@@ -1,0 +1,112 @@
+
+<div class="container-fluid m-5 cont">
+    <form #studentForm="ngForm">
+    
+      <div class="row mb-3">
+        <label for="firstname" class="col-sm-2 col-form-label">Firstname</label>
+        <div class="col-sm-6">
+          <input type="text"  [(ngModel)]="firstname" name="firstname" class="form-control" id="firstname" required>
+          <div *ngIf="error1" class="text-danger">
+            *please fill lastname
+          </div>
+        </div>
+      </div>
+    
+      <div class="row mb-3">
+        <label for="lastname" class="col-sm-2 col-form-label">Lastname</label>
+        <div class="col-sm-6">
+          <input type="text" [(ngModel)]="lastname" name="lastname" class="form-control" id="lastname" required>
+          <div *ngIf="error2" id="re" class="text-danger">
+            *please fill lastname
+          </div>
+        </div>
+      </div>
+    
+      <div class="row mb-3">
+        <label for="address" class="col-sm-2 col-form-label">Address</label>
+        <div class="col-sm-6">
+          <textarea class="form-control" [(ngModel)]="address" name="address" id="address" required></textarea>
+          <div *ngIf="error3" class="text-danger">
+            *address required
+          </div>
+        </div>
+      </div>
+    
+      <div class="row mb-3">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-6">
+          <input type="email" [(ngModel)]="email" name="email" class="form-control" id="email" required>
+          <div *ngIf="error4" class="text-danger">
+            *please enter email
+          </div>
+        </div>
+      </div>
+    
+      <div class="row mb-3">
+        <label for="pass" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-6">
+          <input type="password" [(ngModel)]="pass" name="pass" class="form-control" id="pass" required>
+          <div *ngIf="error5" class="text-danger">
+            *password required
+          </div>
+        </div>
+      </div>
+    
+      <div class="row mb-3">
+        <label for="gender" class="col-sm-3 col-form-label">Gender</label>
+        <div class="col-sm-1 form-check form-check-inline">
+          <input class="form-check-input" [(ngModel)]="gen" type="radio" name="gen" id="male" value="Male" required>
+          <label class="form-check-label" for="male">Male</label>
+        </div>
+        <div class="col-sm-1 form-check form-check-inline">
+          <input class="form-check-input" [(ngModel)]="gen" type="radio" name="gen" id="female" value="Female" required>
+          <label class="form-check-label" for="female">Female</label>
+        </div>
+        <div class="col-sm-1 form-check form-check-inline">
+          <input class="form-check-input" [(ngModel)]="gen" type="radio" name="gen" id="other" value="Other" required>
+          <label class="form-check-label" for="other">Other</label>
+        </div>
+        <div *ngIf="error6" class="text-danger justify">
+          *please select gender
+        </div>
+      </div>
+    
+      <div>
+        <button class="btn btn-primary" (click)="reset(studentForm)">Reset</button>
+        <button type="submit" *ngIf="!bool" (click)="submit(studentForm)" class="btn btn-success mx-5">Submit</button>
+        <button *ngIf="bool" (click)="submit(studentForm)" class="btn btn-success mx-5">Confirm</button>
+      </div>
+    </form>
+    </div>
+    <!-- [disabled]="!studentForm.valid" -->
+    
+       
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Firstname</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Address</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Email</th>
+          <th scope="col">Password</th>
+          <th scope="col">Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sdata of datalist; index as i">
+          <th scope="row"> {{i+1}}</th>
+          <td>{{sdata.firstname}}</td>
+          <td>{{sdata.lastname}}</td>
+          <td>{{sdata.address}}</td>
+          <td>{{sdata.gen}}</td>
+          <td>{{sdata.email}}</td>
+          <td>{{sdata.pass}}</td>
+          <td class="d-flex justify-content-around">
+            <button class="btn btn-warning" (click)="editRow(i,studentForm)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteRow(i,studentForm)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
