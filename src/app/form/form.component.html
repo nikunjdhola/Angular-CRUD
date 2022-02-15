@@ -72,9 +72,9 @@
       </div>
     
       <div>
-        <button class="btn btn-primary" (click)="reset(studentForm)">Reset</button>
-        <button type="submit" *ngIf="!bool" (click)="submit(studentForm)" class="btn btn-success mx-5">Submit</button>
-        <button *ngIf="bool" (click)="submit(studentForm)" class="btn btn-success mx-5">Confirm</button>
+        <button class="btn btn-primary" (click)="reset(studentForm)" routerLink="/reset">Reset</button>
+        <button type="submit" *ngIf="!bool" (click)="submit(studentForm)" class="btn btn-success mx-5" routerLink="/submit">Submit</button>
+        <button *ngIf="bool" (click)="submit(studentForm)" class="btn btn-success mx-5" routerLink="/confirm">Confirm</button>
       </div>
     </form>
     </div>
@@ -104,8 +104,8 @@
           <td>{{sdata.email}}</td>
           <td>{{sdata.pass}}</td>
           <td class="d-flex justify-content-around">
-            <button class="btn btn-warning" (click)="editRow(i,studentForm)">Edit</button>
-            <button class="btn btn-danger" (click)="deleteRow(i,studentForm)">Delete</button>
+            <button class="btn btn-warning" (click)="editRow(i,studentForm)" routerLink="/edit">Edit</button>
+            <button class="btn btn-danger" (click)="deleteRow(i,studentForm)" routerLink="/delete">Delete</button>
           </td>
         </tr>
       </tbody>

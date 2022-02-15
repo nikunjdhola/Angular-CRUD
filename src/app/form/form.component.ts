@@ -32,7 +32,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.datalist = this.dataService.getData();
-    console.log(this.dataService.getData());
   }
 
   check(studentData: NgForm){
@@ -67,7 +66,7 @@ export class FormComponent implements OnInit {
   }
 
   submit(studentData: NgForm){
-    console.log(this.index);
+    
     let err = this.check(studentData);
 
     if(err == true){

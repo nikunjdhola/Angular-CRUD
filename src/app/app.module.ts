@@ -4,17 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UpdateComponent } from './update/update.component';
+// import { UpdateComponent } from './update/update.component';
 import { FormComponent } from './form/form.component';
-import { DetailComponent } from './detail/detail.component';
+// import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UpdateComponent,
-    FormComponent,
-    DetailComponent
+    FormComponent
+    
   ],
   imports: [
     BrowserModule,
